@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raihan Bin Mokter — Brand Identity & Visual Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dim: rgba(201,168,76,0.15);
+    --bg: #0C0B09;
+    --bg2: #131210;
+    --bg3: #1A1815;
+    --text: #F0ECE3;
+    --muted: #8A8478;
+    --border: rgba(201,168,76,0.2);
+    --red: #C94C4C;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── UTILITY ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .gold { color: var(--gold); }
+  .italic { font-style: italic; }
+  .strike { text-decoration: line-through; color: var(--muted); }
+
+  /* ── ANIMATED ENTRANCE ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  @keyframes pulse-border {
+    0%, 100% { border-color: rgba(201,168,76,0.3); }
+    50%       { border-color: rgba(201,168,76,0.8); }
+  }
+
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.35s; }
+  .delay-4 { animation-delay: 0.5s; }
+  .delay-5 { animation-delay: 0.65s; }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: rgba(12,11,9,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+  .topbar-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+  .topbar-cta {
+    background: var(--gold);
+    color: #0C0B09;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .topbar-cta:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 100px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -160px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 36px;
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 9vw, 100px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .hero-headline .accent-line {
+    display: block;
+    color: var(--gold);
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(44px, 7.5vw, 86px);
+  }
+
+  .hero-sub {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+
+  .hero-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: #0C0B09;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 18px 48px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .hero-note {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .hero-note .dot { color: var(--gold); margin: 0 6px; }
+
+  /* ── SOCIAL PROOF STRIP ── */
+  .proof-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    background: var(--bg2);
+  }
+  .proof-item { text-align: center; }
+  .proof-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .proof-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  .proof-div { width: 1px; height: 48px; background: var(--border); }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 62px);
+    line-height: 1;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  .section-body {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 640px;
+    font-weight: 300;
+  }
+
+  /* ── PAIN SECTION ── */
+  .pain-section { padding: 100px 0; }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 56px;
+  }
+  .pain-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .pain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--red);
+  }
+  .pain-card:hover { border-color: rgba(201,168,76,0.4); }
+  .pain-icon { font-size: 22px; margin-bottom: 14px; }
+  .pain-card h3 { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .pain-card p { font-size: 14px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  /* ── OFFER SECTION ── */
+  .offer-section {
+    padding: 100px 0;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .offer-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #0C0B09;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  .offer-price-wrap {
+    margin: 40px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .offer-was {
+    font-size: 22px;
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+  .offer-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .offer-note { font-size: 14px; color: var(--muted); align-self: center; }
+
+  .offer-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 40px 0;
+  }
+  .offer-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 22px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .offer-item-check {
+    width: 24px; height: 24px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .check-svg { width: 12px; height: 12px; stroke: var(--gold); stroke-width: 2.5; fill: none; }
+  .offer-item-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .offer-item-desc { font-size: 13px; color: var(--muted); font-weight: 300; }
+  .offer-item-value { margin-left: auto; font-size: 13px; color: var(--gold); white-space: nowrap; font-weight: 500; flex-shrink: 0; padding-top: 2px; }
+
+  .offer-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 22px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold);
+    border-radius: 6px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .offer-total-label { font-size: 14px; color: var(--gold); font-weight: 500; }
+  .offer-total-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--gold); }
+
+  /* ── SCARCITY ── */
+  .scarcity-section { padding: 80px 0; }
+
+  .scarcity-box {
+    border: 1px solid var(--red);
+    border-radius: 6px;
+    padding: 48px 40px;
+    text-align: center;
+    background: rgba(201,76,76,0.04);
+    animation: pulse-border 3s ease infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  .scarcity-box::before {
+    content: 'WARNING';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    background: var(--red);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    padding: 4px 20px;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .scarcity-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 100px;
+    color: var(--red);
+    line-height: 1;
+    display: block;
+    margin: 20px 0 8px;
+  }
+  .scarcity-label {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+  .scarcity-bar-wrap {
+    max-width: 320px;
+    margin: 0 auto 16px;
+  }
+  .scarcity-bar-bg {
+    background: var(--bg3);
+    border-radius: 100px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .scarcity-bar-fill {
+    background: var(--red);
+    height: 100%;
+    border-radius: 100px;
+    width: 67%;
+    transition: width 1s ease;
+  }
+  .scarcity-bar-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+  /* ── GUARANTEE ── */
+  .guarantee-section { padding: 100px 0; background: var(--bg2); border-top: 1px solid var(--border); }
+
+  .guarantee-box {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .guarantee-badge {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    border: 2px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .badge-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .badge-small {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  .guarantee-content {}
+  .guarantee-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+  .guarantee-content p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 580px;
+  }
+  .guarantee-content p + p { margin-top: 12px; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 120px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .final-cta .section-title { font-size: clamp(40px, 7vw, 70px); margin-bottom: 24px; }
+
+  .final-cta .section-body { margin: 0 auto 48px; }
+
+  .final-cta-sub { font-size: 14px; color: var(--muted); margin-top: 20px; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .proof-strip { gap: 24px; }
+    .proof-div { display: none; }
+    .guarantee-box { flex-direction: column; align-items: center; text-align: center; }
+    .scarcity-box { padding: 48px 24px 32px; }
+    .offer-total { flex-direction: column; text-align: center; }
+    .offer-item-value { margin-left: 0; }
+    .offer-item { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="topbar-logo">RBM Studio</div>
+  <a href="mailto:raihanbinmokter69@gmail.com" class="topbar-cta">Book a Free Call →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow fade-up">Brand Identity · Visual Design · Dhaka, Bangladesh</div>
+
+    <h1 class="hero-headline fade-up delay-1">
+      YOUR BRAND IS EITHER
+      <span class="accent-line">making you money</span>
+      OR LOSING IT.
+    </h1>
+
+    <p class="hero-sub fade-up delay-2">
+      Most businesses look like everyone else — and wonder why clients choose their competition.
+      <strong>Yours won't.</strong> I build brands that make you impossible to ignore.
+    </p>
+
+    <div class="hero-cta-wrap fade-up delay-3">
+      <a href="mailto:raihanbinmokter69@gmail.com" class="btn-primary">Claim Your Brand Transformation →</a>
+      <p class="hero-note">
+        Only <strong style="color:var(--red)">3 client spots</strong> left this month
+        <span class="dot">·</span>
+        No risk. Guaranteed results.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item">
+    <span class="proof-num">3+</span>
+    <span class="proof-label">Years of Experience</span>
+  </div>
+  <div class="proof-div"></div>
+  <div class="proof-item">
+    <span class="proof-num">30+</span>
+    <span class="proof-label">Brands Transformed</span>
+  </div>
+  <div class="proof-div"></div>
+  <div class="proof-item">
+    <span class="proof-num">MCT</span>
+    <span class="proof-label">Microsoft Certified</span>
+  </div>
+  <div class="proof-div"></div>
+  <div class="proof-item">
+    <span class="proof-num">100%</span>
+    <span class="proof-label">Satisfaction Guaranteed</span>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="container">
+    <p class="section-label">The Problem</p>
+    <h2 class="section-title">SOUND FAMILIAR?</h2>
+    <p class="section-body">
+      You have a great product or service. But your visuals are holding you back —
+      and every day that goes by is another client lost to a competitor who just <em>looks</em> more professional.
+    </p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😤</div>
+        <h3>"My logo looks like it was made in 2009."</h3>
+        <p>A dated logo signals a dated business. Your first impression is made in 0.05 seconds — before you even open your mouth.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😬</div>
+        <h3>"Our social media looks inconsistent and amateurish."</h3>
+        <p>Mismatched fonts, random colors, zero visual identity. Potential clients scroll right past you — and into the arms of a competitor.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">💸</div>
+        <h3>"I paid a cheap designer. Got a cheap result."</h3>
+        <p>Low cost, zero strategy. You got a pretty picture with no brand logic behind it — and now you're stuck with it.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🤯</div>
+        <h3>"I don't know how to brief a designer. It ends in frustration."</h3>
+        <p>You waste weeks going back and forth. The final result still isn't quite right. Your time and money — gone.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📉</div>
+        <h3>"Our marketing materials don't convert."</h3>
+        <p>Brochures, flyers, and presentations that sit in a drawer. No message hierarchy. No visual pull. No results.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🌀</div>
+        <h3>"We're invisible in a crowded market."</h3>
+        <p>You look like every other business in your industry. There's nothing to make a client choose YOU over the next option.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER SECTION -->
+<section class="offer-section">
+  <div class="container">
+    <span class="offer-tag">The Grand Slam Offer</span>
+    <p class="section-label">What You Get</p>
+    <h2 class="section-title">THE COMPLETE BRAND TRANSFORMATION PACKAGE</h2>
+    <p class="section-body">
+      This isn't a logo. This is a <strong style="color:var(--text)">complete visual identity system</strong> built to attract your ideal client,
+      position you as the premium choice, and make every marketing touchpoint consistent, credible, and conversion-ready.
+    </p>
+
+    <ul class="offer-items">
+      <li class="offer-item">
+        <div class="offer-item-check"><svg class="check-svg" viewBox="0 0 14 14"><polyline points="2,7 6,11 12,3"/></svg></div>
+        <div>
+          <div class="offer-item-title">Custom Logo & Brand Identity System</div>
+          <div class="offer-item-desc">Primary logo + variations, color palette, typography system, brand usage guidelines. Built for longevity.</div>
+        </div>
+        <div class="offer-item-value">Value: $400</div>
+      </li>
+      <li class="offer-item">
+        <div class="offer-item-check"><svg class="check-svg" viewBox="0 0 14 14"><polyline points="2,7 6,11 12,3"/></svg></div>
+        <div>
+          <div class="offer-item-title">Social Media Visual Kit (10 Templates)</div>
+          <div class="offer-item-desc">Editable post templates, story covers, highlight icons — all locked to your brand. Post in minutes, not hours.</div>
+        </div>
+        <div class="offer-item-value">Value: $250</div>
+      </li>
+      <li class="offer-item">
+        <div class="offer-item-check"><svg class="check-svg" viewBox="0 0 14 14"><polyline points="2,7 6,11 12,3"/></svg></div>
+        <div>
+          <div class="offer-item-title">Marketing Collateral Design</div>
+          <div class="offer-item-desc">Business card, letterhead, email signature, and one promotional poster — ready to print or publish.</div>
+        </div>
+        <div class="offer-item-value">Value: $200</div>
+      </li>
+      <li class="offer-item">
+        <div class="offer-item-check"><svg class="check-svg" viewBox="0 0 14 14"><polyline points="2,7 6,11 12,3"/></svg></div>
+        <div>
+          <div class="offer-item-title">Brand Strategy Session (60 min)</div>
+          <div class="offer-item-desc">Before any design begins, we align your brand to your audience, competitors, and business goals. This alone is worth the investment.</div>
+        </div>
+        <div class="offer-item-value">Value: $150</div>
+      </li>
+      <li class="offer-item">
+        <div class="offer-item-check"><svg class="check-svg" viewBox="0 0 14 14"><polyline points="2,7 6,11 12,3"/></svg></div>
+        <div>
+          <div class="offer-item-title">Unlimited Revisions (14 Days)</div>
+          <div class="offer-item-desc">We don't stop until you love it. No revision caps, no nickel-and-diming. Your satisfaction is the only finish line.</div>
+        </div>
+        <div class="offer-item-value">Value: $100</div>
+      </li>
+      <li class="offer-item">
+        <div class="offer-item-check"><svg class="check-svg" viewBox="0 0 14 14"><polyline points="2,7 6,11 12,3"/></svg></div>
+        <div>
+          <div class="offer-item-title">Source Files + Full Ownership</div>
+          <div class="offer-item-desc">You receive every editable file (AI, EPS, PDF, PNG, SVG). 100% yours. No strings attached.</div>
+        </div>
+        <div class="offer-item-value">Value: $100</div>
+      </li>
+    </ul>
+
+    <div class="offer-total">
+      <span class="offer-total-label">Total Real-World Value</span>
+      <span class="offer-total-value">$1,200+</span>
+    </div>
+
+    <div style="margin-bottom: 40px;">
+      <p style="font-size: 14px; color: var(--muted); margin-bottom: 8px; font-weight: 300;">Your investment for <em>all of the above</em>:</p>
+      <div class="offer-price-wrap">
+        <span class="offer-was">$1,200</span>
+        <span class="offer-price">Contact for Pricing</span>
+      </div>
+      <p style="font-size: 14px; color: var(--muted); font-weight: 300;">Because the right price is the one that fits your business — <strong style="color:var(--text)">let's talk.</strong></p>
+    </div>
+
+    <a href="mailto:raihanbinmokter69@gmail.com" class="btn-primary">Claim This Offer Before It's Gone →</a>
+  </div>
+</section>
+
+<!-- SCARCITY -->
+<section class="scarcity-section">
+  <div class="container">
+    <div class="scarcity-box">
+      <span class="scarcity-number">3</span>
+      <p class="scarcity-label">New client spots remaining this month — out of 5 total.</p>
+
+      <div class="scarcity-bar-wrap">
+        <div class="scarcity-bar-bg">
+          <div class="scarcity-bar-fill"></div>
+        </div>
+        <p class="scarcity-bar-note">2 of 5 spots already claimed this month</p>
+      </div>
+
+      <p style="font-size: 15px; color: var(--muted); font-weight: 300; max-width: 480px; margin: 24px auto 0;">
+        I cap client intake intentionally. Every project gets my full attention, not a factory line.
+        When these slots fill, the next available spot is next month — at a higher rate.
+        <strong style="color: var(--text)">If you're serious, now is the time.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section">
+  <div class="container">
+    <div class="guarantee-box">
+      <div class="guarantee-badge">
+        <span class="badge-big">100%</span>
+        <span class="badge-small">Guaranteed</span>
+      </div>
+      <div class="guarantee-content">
+        <h2>THE IRON-CLAD, NO-RISK GUARANTEE</h2>
+        <p>
+          Here's the deal: if you're not completely satisfied with the direction of your brand identity
+          after our strategy session and first concept presentation, I'll refund every cent.
+          No arguments. No fine print. No drama.
+        </p>
+        <p>
+          I'm so confident in this process — refined across 30+ brand collaborations — that I'm
+          the only one taking on risk here. You either walk away with a brand you love,
+          or you walk away with your money. <strong style="color:var(--text)">Either way, you can't lose.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <p class="section-label">One Decision Away</p>
+    <h2 class="section-title">STOP BLENDING IN.<br>START WINNING CLIENTS.</h2>
+    <p class="section-body">
+      Every week you delay is another week your brand is losing you business.
+      The investment is minimal. The guarantee is ironclad. The results are real.
+      The only risk is doing nothing.
+    </p>
+    <a href="mailto:raihanbinmokter69@gmail.com" class="btn-primary" style="font-size: 18px; padding: 22px 56px;">
+      Yes — Let's Build My Brand →
+    </a>
+    <p class="final-cta-sub">
+      Email: <a href="mailto:raihanbinmokter69@gmail.com" style="color:var(--gold)">raihanbinmokter69@gmail.com</a>
+      &nbsp;·&nbsp;
+      <a href="https://linkedin.com/in/raihan-binmokter" style="color:var(--gold)" target="_blank">LinkedIn Profile</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Raihan Bin Mokter · Graphic Designer & MCT · Dhaka, Bangladesh</p>
+  <p style="margin-top: 6px;">Brand Identity · Social Media Graphics · Logo & Visual Branding · Marketing Materials</p>
+</footer>
+
+</body>
+</html>
